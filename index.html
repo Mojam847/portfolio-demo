@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rejoan Sardar - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #2563eb; /* Blue */
+            --secondary: #1e40af; /* Darker Blue */
+            --dark: #1f2937; /* Dark Gray */
+            --light: #f9fafb; /* Very Light Gray */
+            --gray: #6b7280; /* Medium Gray */
+            --light-gray: #e5e7eb; /* Light Gray */
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            color: var(--white);
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            color: var(--dark);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background: var(--primary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Navbar */
+        nav {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            transition: padding 0.3s ease;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            font-weight: 500;
+            padding-bottom: 5px;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: var(--dark);
+        }
+
+        /* Hero Section */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background-color: var(--white);
+            padding-top: 80px; /* Adjust for fixed navbar */
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1.2;
+        }
+
+        .hero-text h3 {
+            font-size: 1.5rem;
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .hero-text h1 span {
+            color: var(--primary);
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: var(--gray);
+            max-width: 500px;
+        }
+
+        .hero-img {
+            flex: 0.8;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-img img {
+            max-width: 350px;
+            width: 100%;
+            border-radius: 50%;
+            border: 8px solid var(--light-gray);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .social-icons {
+            display: flex;
+            margin-top: 25px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--light-gray);
+            color: var(--dark);
+            border-radius: 50%;
+            margin-right: 15px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        #about {
+            background-color: var(--light);
+        }
+
+        .about-content {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: var(--gray);
+            text-align: justify;
+        }
+
+        .about-info {
+            flex: 0.8;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .about-info h3 {
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            color: var(--dark);
+        }
+
+        .about-info ul li {
+            margin-bottom: 15px;
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+        }
+        .about-info ul li i {
+            color: var(--primary);
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Experience Section */
+        #experience {
+            background-color: var(--white);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--light-gray);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            z-index: 0;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 50px;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--white);
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 20px; /* Space from center line */
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -10px; /* Position the circle on the line */
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 20px; /* Space from center line */
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px; /* Position the circle on the line */
+        }
+
+        .timeline-content {
+            padding: 25px;
+            background-color: var(--light);
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        .timeline-content::before { /* Arrow */
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            border: medium solid var(--light);
+        }
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -10px;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--light);
+        }
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -10px;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent var(--light) transparent transparent;
+        }
+
+
+        .timeline-content h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .timeline-content h4 {
+            font-size: 1rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .timeline-content p {
+            font-size: 0.95rem;
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+        .timeline-content ul {
+            list-style: disc;
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+        .timeline-content ul li {
+            font-size: 0.95rem;
+            color: var(--gray);
+            margin-bottom: 5px;
+        }
+
+        .tags {
+            margin-top: 15px;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: var(--light-gray);
+            color: var(--gray);
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        /* Skills Section */
+        #skills {
+            background-color: var(--light);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .skill-category h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 10px;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            background-color: var(--light-gray);
+            color: var(--dark);
+            padding: 8px 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-size: 0.95rem;
+            display: inline-block; /* Changed for better tag-like appearance */
+            margin-right: 8px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .skill-category li:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        /* Projects Section */
+        #projects {
+            background-color: var(--white);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-content h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .project-date {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .project-content p {
+            font-size: 0.95rem;
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+        .project-content ul {
+            list-style: disc;
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+        .project-content ul li {
+            font-size: 0.95rem;
+            color: var(--gray);
+            margin-bottom: 5px;
+        }
+
+        /* Education Section */
+        #education {
+            background-color: var(--light);
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .education-item {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .education-item h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .education-item h4 {
+            font-size: 1rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .education-date {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .education-item p {
+            font-size: 0.95rem;
+            color: var(--gray);
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: var(--white);
+        }
+
+        .contact-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-content p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            color: var(--dark);
+            font-size: 1rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-right: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--light-gray);
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 0; /* Remove potential gap */
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-text {
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+            .hero-img img {
+                max-width: 300px;
+            }
+            .social-icons {
+                justify-content: center;
+            }
+            .about-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            .about-text, .about-info {
+                flex: none;
+                width: 100%;
+                max-width: 600px; /* Limit width on medium screens */
+            }
+            .about-text {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .navbar {
+                padding: 15px 0;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 65px; /* Adjust based on navbar height */
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                padding: 20px 0;
+                text-align: center;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                margin: 15px 0;
+                margin-left: 0;
+            }
+            .hamburger {
+                display: block;
+            }
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            .hero-text p {
+                font-size: 1rem;
+            }
+            .timeline::after {
+                left: 20px; /* Move timeline line to the left */
+                margin-left: 0;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 50px; /* Adjust padding for content */
+                padding-right: 10px;
+                left: 0 !important; /* Override inline style */
+                margin-bottom: 40px;
+            }
+            .timeline-item::after {
+                left: 10px; /* Position circle on the new line */
+                right: auto;
+            }
+            .timeline-item:nth-child(even) {
+                 left: 0 !important; /* Ensure even items are also on left */
+            }
+             .timeline-item:nth-child(even)::after {
+                left: 10px; /* Position circle on the new line */
+            }
+            .timeline-content::before { /* Adjust arrow for left alignment */
+                left: -10px;
+                right: auto;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent var(--light) transparent transparent;
+            }
+             .timeline-item:nth-child(odd) .timeline-content::before,
+             .timeline-item:nth-child(even) .timeline-content::before {
+                 left: -10px;
+                 right: auto;
+                 border-width: 10px 10px 10px 0;
+                 border-color: transparent var(--light) transparent transparent;
+             }
+
+            .skills-grid, .projects-grid, .education-grid {
+                grid-template-columns: 1fr; /* Stack items */
+            }
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+             .hero-img img {
+                max-width: 250px;
+            }
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            .section-title {
+                font-size: 1.6rem;
+            }
+            .timeline-item {
+                 padding-left: 45px;
+            }
+             .timeline-item::after {
+                left: 5px;
+                width: 15px;
+                height: 15px;
+            }
+            .contact-item {
+                font-size: 0.9rem;
+            }
+             .contact-item i {
+                font-size: 1.3rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+        <div class="container navbar">
+            <a href="#hero" class="logo">Rejoan's Portfolio Website</a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#hero" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h3>Hello, I'm</h3>
+                <h1>Rejoan <span>Sardar</span></h1>
+                <p>Pre-final Computer Science and Engineering student at Lovely Professional University. Passionate about open-source development, full-stack web/app development, and problem-solving.</p>
+                <div class="social-icons">
+                    <a href="mailto:rejoansardar4@gmail.com" target="_blank" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="tel:+917319341385" aria-label="Phone"><i class="fas fa-phone"></i></a>
+                    <a href="https://github.com/your-github-username" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a> <!-- Add your GitHub link -->
+                    <a href="https://linkedin.com/in/your-linkedin-profile" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a> <!-- Add your LinkedIn link -->
+                    <a href="https://www.interviewbit.com/profile/your-interviewbit-profile" target="_blank" aria-label="InterviewBit"><i class="fas fa-code"></i></a> <!-- Add your InterviewBit link -->
+                </div>
+                <a href="#contact" class="btn" style="margin-top: 30px;">Contact Me</a>
+                 <a href="/path/to/your/resume.pdf" class="btn" style="margin-top: 30px; margin-left: 15px; background-color: var(--gray);" download>Download CV</a> <!-- Add path to your resume PDF -->
+            </div>
+            <div class="hero-img">
+                <!-- You can add a profile picture here -->
+                 <img src="https://media.licdn.com/dms/image/v2/D4D03AQEHyycrRgaKjw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1727016257428?e=1750896000&v=beta&t=cKjt4Mxy0ul6VUw_92teRPlUQPPk7vo4iQEbFshzPv4" alt="Rejoan Sardar"> <!-- Placeholder Image -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                     <p>I am a dedicated and enthusiastic Computer Science and Engineering student in my pre-final year at Lovely Professional University. My core interests lie in leveraging technology to solve real-world problems, with a strong focus on open-source development, full-stack applications, and data structures & algorithms.</p>
+                     <p>I thrive in collaborative environments and have actively contributed to open-source projects like stdlib and participated in Google Summer of Code with Node.js. My experience spans building high-performance numerical functions, enhancing developer tools like REPLs, and tackling complex algorithmic challenges (500+ DSA questions solved, Global Rank 3892 on InterviewBit).</p>
+                     <p>I am proficient in multiple programming languages and frameworks and always eager to learn new technologies and methodologies to enhance my skill set.</p>
+                </div>
+                <div class="about-info">
+                    <h3>Personal Information</h3>
+                    <ul>
+                        <li><i class="fas fa-user"></i> <strong>Name:</strong> Rejoan Sardar</li>
+                        <li><i class="fas fa-graduation-cap"></i> <strong>Degree:</strong> B.Tech CSE (Pre-final)</li>
+                        <li><i class="fas fa-university"></i> <strong>University:</strong> Lovely Professional University</li>
+                        <li><i class="fas fa-envelope"></i> <strong>Email:</strong> rejoansardar4@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> <strong>Phone:</strong> +91 7319341385</li>
+                        <li><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> India</li> <!-- Add your location if desired -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline">
+                <!-- GSoC 2024 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Google Summer of Code 2024 - Node.js REPL</h3>
+                        <h4>Open Source Development</h4>
+                        <div class="timeline-date">May 2024 - Aug 2024</div>
+                        <ul>
+                            <li>Enhanced the stdlib REPL for Node.js, introducing features like syntax highlighting, fuzzy auto-completion, and statistical computing tools.</li>
+                            <li>Aimed to improve upon the standard Node.js REPL, incorporating enhancements for better data visualization and interaction.</li>
+                            <li>Worked towards matching capabilities of systems like IPython and Julia.</li>
+                        </ul>
+                        <div class="tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">Developer Tools</span>
+                            <span class="tag">CLI</span>
+                            <span class="tag">REPL</span>
+                            <span class="tag">Interactive Interpreter</span>
+                            <span class="tag">GSoC</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stdlib Developer -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Stdlib - Open Source Developer</h3>
+                        <h4>Numerical Computing & REPL Development</h4>
+                        <div class="timeline-date">May 2023 - Present</div>
+                        <p><strong>REPL Enhancements (May 2024 - Sep 2024):</strong></p>
+                        <ul>
+                            <li>Added syntax highlighting, fuzzy auto-completion, and statistical tools to the Node.js REPL, elevating it to compete with IPython and Julia.</li>
+                        </ul>
+                         <p><strong>Mathematical Functions (May 2023 - Apr 2024):</strong></p>
+                        <ul>
+                            <li>Built 150+ special mathematical functions (e.g., erf, acos, log) in JavaScript and C, boosting computational efficiency.</li>
+                        </ul>
+                         <p><strong>High-Performance Distributions (Sept 2024):</strong></p>
+                        <ul>
+                             <li>Developed 35+ distribution functions achieving significant speedup (reportedly 10,000x over SciPy) for real-time statistical analysis.</li>
+                        </ul>
+                        <div class="tags">
+                            <span class="tag">C</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">Numerical Computing</span>
+                            <span class="tag">REPL Development</span>
+                            <span class="tag">Open Source</span>
+                            <span class="tag">Performance Optimization</span>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- DSA Achievement -->
+                 <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Data Structures & Algorithms Practice</h3>
+                        <h4>Problem Solving</h4>
+                        <div class="timeline-date">Ongoing</div>
+                        <ul>
+                            <li>Solved 500+ questions covering various DSA topics.</li>
+                            <li>Achieved Global Rank 3892 on InterviewBit.</li>
+                        </ul>
+                        <div class="tags">
+                            <span class="tag">DSA</span>
+                            <span class="tag">Algorithms</span>
+                            <span class="tag">Problem Solving</span>
+                            <span class="tag">InterviewBit</span>
+                            <span class="tag">Competitive Programming</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Core Areas</h3>
+                    <ul>
+                        <li>Full Stack Web Dev</li>
+                        <li>App Dev (Flutter)</li>
+                        <li>DSA</li>
+                        <li>Machine Learning</li>
+                        <li>Data Engineering</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>C++</li>
+                        <li>Java</li>
+                        <li>JavaScript</li>
+                        <li>Dart</li>
+                        <li>PySpark</li>
+                        <li>MySQL</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Frameworks & Tools</h3>
+                    <ul>
+                        <li>Django</li>
+                        <li>Flutter</li>
+                        <li>ReactJS</li>
+                        <li>NodeJS</li>
+                        <li>Spring Boot</li>
+                        <li>Git & Github</li>
+                        <li>Firebase</li>
+                        <li>REST API</li>
+                        <li>Google Cloud</li>
+                    </ul>
+                </div>
+                 <div class="skill-category">
+                    <h3>Libraries</h3>
+                    <ul>
+                        <li>Pandas</li>
+                        <li>NumPy</li>
+                        <li>Matplotlib</li>
+                        <li>Seaborn</li>
+                        <li>Sklearn</li>
+                        <li>PyTorch</li>
+                        <li>Keras</li>
+                    </ul>
+                </div>
+                 <div class="skill-category">
+                    <h3>Computer Science Concepts</h3>
+                    <ul>
+                        <li>Computer Networks</li>
+                        <li>Cryptography</li>
+                        <li>Cyber Security</li>
+                        <li>Data Structures</li>
+                        <li>Algorithms</li>
+                        <li>Databases</li>
+                        <li>Operating Systems</li>
+                        <li>Machine Learning</li>
+                        <li>Pattern Recognition</li>
+                    </ul>
+                </div>
+                 <div class="skill-category">
+                    <h3>Mathematics</h3>
+                    <ul>
+                        <li>Probability</li>
+                        <li>Statistics</li>
+                        <li>Stochastic Processes</li>
+                        <li>Mathematics for Computing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>Enhanced Node.js REPL</h3>
+                        <div class="project-date">May 2024 - Aug 2024</div>
+                        <p>Developed advanced features for the Node.js REPL to improve developer experience for numerical and scientific computing.</p>
+                        <ul>
+                            <li>Implemented fuzzy auto-completion & syntax highlighting.</li>
+                            <li>Added tabular data visualization tools.</li>
+                            <li>Integrated bracketed-paste support & multi-line editing.</li>
+                            <li>Enabled custom keybindings.</li>
+                        </ul>
+                        <div class="tags">
+                            <span class="tag">Node.js</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Developer Tools</span>
+                            <span class="tag">CLI</span>
+                            <span class="tag">REPL</span>
+                            <span class="tag">Interactive Interpreter</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>Implementation of Special Mathematical Functions</h3>
+                         <div class="project-date">May 2023 - Apr 2024</div>
+                        <p>Contributed to the stdlib open-source library by developing and implementing a large set of special mathematical functions.</p>
+                         <ul>
+                            <li>Developed 150+ functions (e.g., erf, erfinv, acos, asin, log).</li>
+                            <li>Implemented functions in both JavaScript and C for performance.</li>
+                            <li>Enhanced computational efficiency for numerical libraries.</li>
+                        </ul>
+                        <div class="tags">
+                            <span class="tag">C</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">Numerical Computing</span>
+                            <span class="tag">Mathematics</span>
+                            <span class="tag">Open Source</span>
+                            <span class="tag">Performance</span>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Add more project cards as needed -->
+                 <!--
+                 <div class="project-card">
+                    <div class="project-content">
+                        <h3>Project Title 3</h3>
+                         <div class="project-date">Start Date - End Date</div>
+                        <p>Brief description of the project.</p>
+                         <ul>
+                            <li>Key feature or accomplishment 1.</li>
+                            <li>Key feature or accomplishment 2.</li>
+                        </ul>
+                        <div class="tags">
+                            <span class="tag">Tech 1</span>
+                            <span class="tag">Tech 2</span>
+                        </div>
+                    </div>
+                </div>
+                -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-grid">
+                <div class="education-item">
+                    <h3>Lovely Professional University</h3>
+                    <h4>Bachelors of Technology in Computer Science and Engineering</h4>
+                    <div class="education-date">Aug 2022 - July 2026 (Expected)</div>
+                    <p>Current CGPA: 6.5 / 10.0</p>
+                    <p>Relevant Coursework: Data Structures & Algorithms, Databases, Operating Systems, Computer Networks, Cryptography, Machine Learning, Probability & Statistics.</p>
+                </div>
+                <div class="education-item">
+                    <h3>Nimpith Ramkrishna Vidyabhavan</h3>
+                    <h4>Secondary & Higher Secondary Education</h4>
+                    <div class="education-date">Jan 2009 - April 2021</div>
+                    <p>Higher Secondary (HSC): 80%</p>
+                    <p>Secondary (SSC): 75.71%</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container contact-content">
+            <h2 class="section-title">Get In Touch</h2>
+            <p>I'm currently seeking opportunities and open to collaborations. Feel free to reach out if you have any questions or just want to connect!</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:rejoansardar4@gmail.com">rejoansardar4@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+917319341385">+91 7319341385</a>
+                </div>
+                 <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="https://linkedin.com/in/your-linkedin-profile" target="_blank">LinkedIn Profile</a> <!-- Add your LinkedIn link -->
+                </div>
+                 <div class="contact-item">
+                    <i class="fab fa-github"></i>
+                     <a href="https://github.com/your-github-username" target="_blank">GitHub Profile</a> <!-- Add your GitHub link -->
+                </div>
+            </div>
+             <a href="mailto:rejoansardar4@gmail.com" class="btn">Send Email</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Rejoan Sardar. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Hamburger Menu ---
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            // Toggle hamburger icon
+            const icon = hamburger.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close menu when a link is clicked (optional)
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    hamburger.querySelector('i').classList.remove('fa-times');
+                    hamburger.querySelector('i').classList.add('fa-bars');
+                }
+            });
+        });
+
+        // --- Active Nav Link Highlighting on Scroll ---
+        const sections = document.querySelectorAll('section');
+        const navLi = document.querySelectorAll('nav .nav-links li a');
+        const nav = document.getElementById('navbar'); // Get the navbar element
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                // Adjust offset based on navbar height + a little extra space
+                const sectionHeight = section.clientHeight;
+                 if (pageYOffset >= (sectionTop - nav.offsetHeight - 50)) {
+                    current = section.getAttribute('id');
+                 }
+            });
+
+            navLi.forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href') === `#${current}`) {
+                    a.classList.add('active');
+                }
+            });
+
+             // Add shadow to navbar on scroll
+            if (window.scrollY > 50) {
+                nav.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                nav.querySelector('.navbar').style.padding = '10px 0'; // Optional: shrink navbar padding
+            } else {
+                nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.08)';
+                 nav.querySelector('.navbar').style.padding = '15px 0'; // Restore padding
+            }
+        });
+
+        // Initial check in case the page loads scrolled down
+        window.dispatchEvent(new Event('scroll'));
+
+    </script>
+
+</body>
+</html>
